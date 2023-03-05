@@ -58,4 +58,5 @@ there is a body of software, in face, that is responsible for making it easy to 
 - 加载执行
   - ./a.out
 
+gcc -c {{source.c}} Compile source code without linking.
 
