@@ -45,3 +45,17 @@ three easy pieces refers to: virtualization, concurrency, and persistence. 虚�
 
 there is a body of software, in face, that is responsible for making it easy to run programs (even allowing you to seemingly run many at the same time), allowing programs to share memory, enabling programs to interact with devices, and other fun stuff like that. That is Operate System.
 
+操作系统确保系统能够正确和高效的运行，实现这一点的主要方式是通过一种通用的技术，叫做虚拟化virtualization。具体来说，OS将物理资源，例如处理器、内存、磁盘转化为更通用、强大和易用的虚拟形式。因此我们时常称OS为虚拟机。
+
+为了让用户能够告诉操作系统要做什么，OS同时提供了API接口供用户调用。
+
+---
+
+## 计算机系统基础习题课
+
+- 编译、链接: g++ Main.cpp
+  - 预编译 -> 编译 -> 汇编 -> 链接 -> a.out
+- 加载执行
+  - ./a.out
+
+
