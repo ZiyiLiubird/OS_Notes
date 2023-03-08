@@ -58,5 +58,98 @@ there is a body of software, in face, that is responsible for making it easy to 
 - 加载执行
   - ./a.out
 
-gcc -c {{source.c}} Compile source code without linking.
+g++ -c {{source.c}} Compile and assemble source code without linking.
+
+g++ -S Compile only; do not assemble or link.
+
+g++ -E Preprocess only; do not compile, assemble or link.
+
+### 预编译
+
+```c++
+#include <stdio.h> //
+#include "stdlib.h"
+```
+
+### 指针
+
+指针本质上是地址，指向内存中的一片区域；从表面看，指针是一个整数，这个整数的指针指向的内存地址；我们在c++程序中创建的所有变量都有地址，可以通过指针获取这个地址；指针的类型有助于借助指针读写相应的内存区域；例如 int * prt 表示指针ptr指向了一片存储着int 变量的区域，四个字节空间；
+
+```c++
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+
+int main()
+{
+    int * buffer = new int[8];
+    memset(buffer, 0, sizeof(buffer));
+    std::cout << "size of buffer: " << (sizeof(buffer)) << std::endl;
+    for (int i = 0; i < sizeof(buffer); i++)
+    {
+        std::cout << buffer[i] << ' ';
+    }
+    std::cout << std::endl;
+    delete[] buffer;
+    return 0;
+}
+```
+
+指针本身也是变量；所以指针本身也有地址，我们可以构建指向指针的指针，也就是它指向一个地址，这个地址又指向另一个地址；
+
+---
+
+### reference 引用
+
+本质上说，指针和引用是一回事；但是引用不是变量，不需要预先创建，也不占用内存；下面看一下引用的创建方式：
+
+```c++
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+
+#define Log(x) std::cout << x << std::endl;
+
+int main()
+{
+    int a = 5;
+    int& ref = a; // construct a reference of a;
+    std::cout << "a = " << a << std::endl;
+    std::cout << "ref = " << ref << std::endl;
+    std::cout << "a = " << a << std::endl;
+    return 0;
+}
+```
+
+两种等价的方式：
+```c++
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+
+#define Log(x) std::cout << x << std::endl;
+
+void increment(int * value)
+{
+   (*value)++;
+}
+
+void increment_ref(int& value)
+{
+   value++;
+}
+
+int main()
+{
+    int a = 5;
+    increment(&a);
+    Log(a);
+    a = 5;
+    increment_ref(a);
+    Log(a);
+    return 0;
+}
+```
+
+引用能做的事情，指针都能做；但是合理使用引用可以让语法更清晰；
 
